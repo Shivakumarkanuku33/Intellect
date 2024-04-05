@@ -10,20 +10,38 @@ import com.intellect.repository.EmployeeRepository;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService{
-	
+
 	@Autowired
 	EmployeeRepository employeeRepository;
 
 	@Override
 	public Employee saveEmployee(Employee employee) {
-		
+
 		return employeeRepository.save(employee);
 	}
 
 	@Override
 	public List<Employee> getEmployees() {
-	
+
 		return employeeRepository.findAll();
+	}
+
+	@Override
+	public Employee getEmployeeById(int id) {
+		return employeeRepository.getEmployeeById(id);
+		 
+	}
+
+	@Override
+	public Employee updateEmployee(Employee employee) {
+		
+		return employeeRepository.updateEmployee(employee);
+	}
+
+	@Override
+	public String deleteEmployee(Integer id) {
+		employeeRepository.deleteById(id);
+		return null;
 	}
 
 }
